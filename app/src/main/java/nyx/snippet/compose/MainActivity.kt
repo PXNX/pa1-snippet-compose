@@ -18,9 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Pa1snippetcomposeTheme {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    MyHelloWorld(null)
-
+                MyUnitExample(someText = null) {
                     MyGreeting()
                 }
             }
@@ -45,3 +43,10 @@ fun MyGreeting() {
         }
     }
 }
+
+@Composable
+fun MyUnitExample(someText: String?, content: @Composable () -> Unit) =
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        MyHelloWorld(someText)
+        content()
+    }
